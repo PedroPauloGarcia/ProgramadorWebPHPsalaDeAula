@@ -15,8 +15,18 @@
         <input type="text" name="Valor"><br>
         Quantidade:<br>
         <input type="text" name="Quantidade"><br>
-        Parcelar:<br>
-        <input type="text" name="Parcelar"><br>
+        Parcelar em:<br>
+        <select name="Parcelar" id="">
+            <option value="2x"></option>
+            <option value="3x"></option>
+            <option value="4x"></option>
+            <option value="5x"></option>
+            <option value="6x"></option>
+            <option value="7x"></option>
+            <option value="8x"></option>
+            <option value="9x"></option>
+            <option value="10x"></option>
+        </select>
         
         <input type="submit" value="Comprar">
         </form>
