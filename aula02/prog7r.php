@@ -8,23 +8,24 @@
     <title>Parte de PHP</title>
 </head>
 <body>
-    <div>
-        <p>
-        Escreva um programa
-        </p>
-        <?php
-            $Login = $_POST["Login"];
-            $Senha = $_POST["Senha"];
-            $Perfil = $_POST["Perfil"];
-            
-            echo "<h3>Cadastro de Usuário</h3>";
+<div>
+     <?php
+        
+        $a = $_GET["n1"];
+        $b = $_GET["n2"];
+        $c = $_GET["n3"];
 
-            echo "Login: $Login, Senha: $Senha, Perfil: $Perfil"; 
+        if($a > $b && $a > $c){
+            echo "<h1 style='text-align: center'>O primeiro é o maior, mané</h1";
+        } else if($b > $a && $b > $c) {
+            echo "<h1 style='text-align: center'>O segundo é o maior, paspalho</h1";
+        } else {
+            echo "<h1 style='text-align: center'>O terceiro é o maior, bobão</h1";
+        }
+        
 
-        ?>
-        <br>
-        <a href="prog7.php"><h3>Volta</h3></a>
-
-    </div>
+     ?>
+    <a href="prog7.html"><h3>Voltar</h3></a>
+</div>
 </body>
 </html>

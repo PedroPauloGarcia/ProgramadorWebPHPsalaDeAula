@@ -9,17 +9,34 @@
 </head>
 <body>
 <div>
-     <h3>Dados do produto</h3>
-    <?php
-    $valor = $_POST["Valor"];
-    $quantidade = $_POST["Quantidade"];
-    $parcelar = $_POST["Parcelar"];
-   
-    echo "Valor total: ".($valor * $quantidade / $parcelar);
+     <?php
+        
+        $numero = $_GET["n"];
 
-   ?>
-   
-   <a href="prog8.php"><h3>Volta</h3></a>
-    </div>
+        // if($numero > 0){
+        //     echo "<h1 style='text-align: center'>Positivo</h1";
+        // }
+        //     else {
+        //         echo "<h1 style='text-align: center'>Negativo</h1";
+        //     }
+                
+        //  if($numero < 11){
+        //      echo "<h1 style='text-align: center'>Valido</h1";
+        // }
+        // else{
+        //     echo "<h1 style='text-align: center'>Invalido</h1";
+        // }
+
+        if($numero < 0 || $numero > 10){
+            echo "<h1 style='text-align: center'>Invalido</h1";
+        } else {
+            echo "<h1 style='text-align: center'>Valido</h1";
+        }
+
+        
+
+     ?>
+    <a href="prog8.html"><h3>Volta</h3></a>
+</div>
 </body>
 </html>
