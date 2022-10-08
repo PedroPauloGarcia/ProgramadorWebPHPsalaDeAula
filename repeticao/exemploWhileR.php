@@ -9,31 +9,21 @@
     <link rel="stylesheet" href="../css/estilo.css"/>
     <title>PHP</title>
 </head>
-<body>
+<body> 
     <div>
         <p style="text-align: center;">
-            Exercitando condições de multiplos casos com switch.
+            Exercitando condições de multiplos casos com While.
         </p>
         <p>
-            Escreva um número, de acordo com a sua escolha e veja o resuldado da operação aritimédica.
+            Mostre uma contagem de 1 a 10
         </p>
         <?php
-            $numero = $_POST["numero"];
-            $operacao = $_POST["operacao"];
+            $contador = 10;
 
-            switch($operacao){
-                case 1:
-                    $resposta = $numero * 2;
-                    break;
-                case 2:
-                    $resposta = pow($numero, 3);    
-                    break;
-                case 3:
-                    $resposta = sqrt($numero);
-                    break;
+            while($contador >= 1){
+                echo $contador . "<br>";
+                $contador = $contador - 1;
             }
-
-            echo "O resultado da operação solicitada foi : $resposta";
 
         ?>
         <br>
@@ -42,7 +32,7 @@
         </a>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 </body>
 </html>

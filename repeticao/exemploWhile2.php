@@ -9,40 +9,34 @@
     <link rel="stylesheet" href="../css/estilo.css"/>
     <title>PHP</title>
 </head>
-<body>
+<body> 
     <div>
         <p style="text-align: center;">
-            Exercitando condições de multiplos casos com switch.
+            Exercitando condições de multiplos casos com While.
         </p>
         <p>
-            Escreva um número, de acordo com a sua escolha e veja o resuldado da operação aritimédica.
+            Criando dinâmicamente caixas textos 
         </p>
+        <form action="exemplowhile2R.php" method="get">
         <?php
-            $numero = $_POST["numero"];
-            $operacao = $_POST["operacao"];
-
-            switch($operacao){
-                case 1:
-                    $resposta = $numero * 2;
-                    break;
-                case 2:
-                    $resposta = pow($numero, 3);    
-                    break;
-                case 3:
-                    $resposta = sqrt($numero);
-                    break;
-            }
-
-            echo "O resultado da operação solicitada foi : $resposta";
+        $n = 1;
+        while($n <= 5){
+            echo "<label for='id$n' class='form-label'>Label $n</label>
+            <input type='number' class='form-control' name='v$n' id='id$n'>
+            <br>";
+            $n = $n + 1;
+        }
 
         ?>
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </form>
         <br>
-        <a href="exemploSwitch.html">
-        <i class="bi bi-reply" style="font-size: 2rem; color: cornflowerblue;"></i>
+        <!-- <a href="exemploSwitch.html"> -->
+        <!-- <i class="bi bi-reply" style="font-size: 2rem; color: cornflowerblue;"></i> -->
         </a>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 </body>
 </html>

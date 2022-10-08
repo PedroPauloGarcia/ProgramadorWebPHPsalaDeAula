@@ -9,40 +9,38 @@
     <link rel="stylesheet" href="../css/estilo.css"/>
     <title>PHP</title>
 </head>
-<body>
+<body> 
     <div>
         <p style="text-align: center;">
-            Exercitando condições de multiplos casos com switch.
+            Exercitando condições de multiplos casos com While.
         </p>
         <p>
-            Escreva um número, de acordo com a sua escolha e veja o resuldado da operação aritimédica.
+            Criando dinâmicamente caixas de textos.
         </p>
         <?php
-            $numero = $_POST["numero"];
-            $operacao = $_POST["operacao"];
-
-            switch($operacao){
-                case 1:
-                    $resposta = $numero * 2;
-                    break;
-                case 2:
-                    $resposta = pow($numero, 3);    
-                    break;
-                case 3:
-                    $resposta = sqrt($numero);
-                    break;
+            $i = 1;
+            while($i <= 5){
+                $v = "num" . $i;
+                $url = "v" . $i;
+                $$v = $_GET["$url"];
+                $i++;
             }
-
-            echo "O resultado da operação solicitada foi : $resposta";
+            // echo "$num1 $num2 $num3 $num4 $num5";
+            $i = 1;
+            while($i <= 5){
+                $v = "num" . $i;
+                echo "valor $i: " . $$v ."<br>";
+                $i++;
+            }
 
         ?>
         <br>
-        <a href="exemploSwitch.html">
+        <a href="exemploWhile2.php">
         <i class="bi bi-reply" style="font-size: 2rem; color: cornflowerblue;"></i>
         </a>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 </body>
 </html>
