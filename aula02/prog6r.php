@@ -14,7 +14,6 @@
         $numero = $_GET["n"];
 
         if($numero > 0){
-            echo "<h1 style='text-align: center'>Positivo</h1";
             if($numero > 10){
                 echo "<h1 style='text-align: center'>Valido</h1";
             }
