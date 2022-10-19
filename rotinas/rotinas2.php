@@ -20,18 +20,19 @@
         <pre>
             <?php
 
-                include "procedimentosFuncoes.php";
+                include "funcoes.php";
+                include "funcoes2.php";
 
-                escreva_texto();
-                escreva_texto2("Pedro");
-                hoje();
-                soma(10, 10, 10);
-                pule_linha(1);
-                subtração(14, 4);
-                pule_linha(1);
-                multiplicacao(2,2);
-                pule_linha(1);
-                dividindo2(20,2);
+                escreva_texto2("texto normal");
+                $texto = escreva_texto3("Texto com retorno");
+                echo $texto;
+                $br = pule_linha1(5);
+                echo "$br";
+                $agora = hoje1();
+                echo "$agora";
+                $br = pule_linha1(1);
+                echo "$br";
+                
             ?>
         </pre>
 
