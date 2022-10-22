@@ -23,15 +23,13 @@
                 include "funcoes.php";
                 include "funcoes2.php";
 
-                escreva_texto2("texto normal");
                 $texto = escreva_texto3("Texto com retorno");
                 echo $texto;
-                $br = pule_linha1(5);
-                echo "$br";
+                pule_linha(1);               
                 $agora = hoje1();
                 echo "$agora";
-                $br = pule_linha1(1);
-                echo "$br";
+                pule_linha(1);
+                
                 
             ?>
         </pre>
