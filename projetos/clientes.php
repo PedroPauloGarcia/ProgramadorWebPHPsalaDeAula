@@ -54,8 +54,8 @@
 					<td><?=$cliente["sexo"]; ?></td>
 					<td><?=$cliente["ativo"]; ?></td>
 					<td>
-						<a href="edicaoCliente.php">[EDITAR]</a>
-						<a href="excluirCliente.php">[EXCLUIR]</a>
+						<a href="edicaoCliente.php?id=<?=$cliente['idcliente']; ?>">[EDITAR]</a>
+						<a href="excluirCliente.php?id=<?=$cliente['idcliente']; ?>">[EXCLUIR]</a>
 					</td>
 
 				<?php endforeach ?>	
