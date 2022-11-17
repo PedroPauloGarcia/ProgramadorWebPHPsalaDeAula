@@ -81,6 +81,13 @@ input[type=text]{
     border: none;
  }
 
+ /* .fotoProduto{
+    height: 200px;
+    margin: auto;
+    object-fit: cover;
+} */
+
+
 header nav{
     width: 1024px;
     position: absolute;
