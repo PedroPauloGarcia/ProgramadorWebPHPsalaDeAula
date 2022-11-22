@@ -72,14 +72,6 @@ header input[type=text] {
     border: none;
 }
 
-/* #logout {
-    position: absolute;
-    right: 5px;
-    top: 5;
-    background-color: none;
-    border: none;
-} */
-
 .cliente {
     position: absolute;
     right: 5px;

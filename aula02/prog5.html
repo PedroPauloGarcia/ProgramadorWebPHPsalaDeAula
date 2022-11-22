@@ -9,15 +9,31 @@
 </head>
 <body>
 <div>
-    <h2 style="text-align: center">Informações</h2>
+    <p>Escreva um programa que leia
+        o preço e a quantidade de produtos comprados.
+        
+        O programa deverá calcular um desconto de
+        10% no valor total a ser pago se o
+        valor do produto for maior que 300.
+        
+        O programa deverá calcular um 
+        desconto de 7% no valor total 
+        a ser pago se o número de produtos
+        comprados for maior que 5.
+        
+        O programa deverá calcular e imprimir o valor
+        total a ser pago com os possíveis descontos.
+            </p>
+    <hr/>
+    <h2 style="text-align: center">Informações dos Produtos</h2>
     <fieldset>
         <legend>Dados do Produto</legend>
         <form action="prog5r.php" method="get">
             Valor:<br/>
-            <input type="text" name="Valor" placeholder="Digite o Valor do Produto"/>
+            <input type="text" name="valor" placeholder="Digite o Valor do Produto"/>
             <br/>
             Quantidade:<br/>
-            <input type="number" name="Quantidade" min="1" placeholder="Digite a Quantidade"/>
+            <input type="number" name="qtd" min="1" placeholder="Digite a Quantidade"/>
             <br/>
             <input type="submit" value="Enviar"/>
         </form>

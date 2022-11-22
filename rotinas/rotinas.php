@@ -13,26 +13,34 @@
 
 <body>
     <div>
-        <h1 style="text-align: center;">Procedimentos, funções e métodos.</h1>
-        <h4 style="text-align: center;">restando funções</h4>
+
+
+
+        <h1 style="text-align: center;">
+            Procedimentos, Funções e Métodos.
+        </h1>
+        <h4 style="text-align: center;">Testando Funções</h4>
         <hr>
         <br>
         <pre>
-            <?php
+        <?php
+        
+        include "funcoes.php";
 
-                include "procedimentosFuncoes.php";
+       escreva_texto();
+       pulaLinha(2);
+       escreva_texto2("Velasco");
+       pulaLinha(-3);
+       hoje();
+       pulaLinha(1);
+       echo "<h4 style='text-align: center;'>-----------------------------</h4>";
+       soma(15, 78);
+       soma2(15, 78, 55, 1, 2);
+       subtracao(20, 8);
+       multiplicacao(7, 3);
+       divisao(15, 0);
 
-                escreva_texto();
-                escreva_texto2("Pedro");
-                hoje();
-                soma(10, 10, 10);
-                pule_linha(1);
-                subtração(14, 4);
-                pule_linha(1);
-                multiplicacao(2,2);
-                pule_linha(1);
-                dividindo2(20,2);
-            ?>
+        ?>
         </pre>
 
     </div>

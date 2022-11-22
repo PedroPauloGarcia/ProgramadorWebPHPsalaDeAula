@@ -15,18 +15,23 @@
     <?php
 		$num1 = $_GET["num1"];
 		$num2 = $_GET["num2"];
-       
-    $total = ($num1 + $num2);
+        //Soma realizada com sucesso, mesmo sendo uma das variáveis string
+        $total = ($num1 + $num2);
 		echo "A soma de ".$num1." + ".$num2." = ". ($num1 + $num2);
-    echo "<br>A soma de ".$num1." + ".$num2." = ". $total;
-    
-    echo "<br>A multiplicação de ".$num1." x " .$num2." = ". ($num1 * $num2);
-    echo "<br>A multiplicaçao de ".$num1." x ".$num2." = ". $total;
-
+		echo "<br>A soma de ".$num1." + ".$num2." = ". $total;
+    echo "<br>";
+    echo "A soma de ".$num1." - ".$num2." = ". ($num1 - $num2);
+    echo "<br>";
+		echo "A soma de ".$num1." * ".$num2." = ". ($num1 * $num2);
+    echo "<br>";
+		echo "A soma de ".$num1." / ".$num2." = ". ($num1 / $num2);
+    echo "<br>";
+		echo "A soma de ".$num1." % ".$num2." = ". ($num1 % $num2);
+		
     ?>
     <br/>
     <br/>
-    
+    <a href="index.php"><h3>Voltar</h3></a>
 </div>
 </body>
 </html>

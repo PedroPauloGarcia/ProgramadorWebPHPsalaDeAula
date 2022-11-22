@@ -9,48 +9,54 @@
 	<!--  -->
 	<body>
 		<?php 
-			include "html/header.php";
-			require_once "src/conexao.php";
+		include "html/header.php";
+		require_once "src/conexao.php";
 
-			$sql_code = "SELECT * FROM produtos";
-			$sql_query = $conexao->query($sql_code);
-			
+		$sql_code = "SELECT * FROM produtos";
+		$sql_query = $conexao->query($sql_code);
+
+		if(!isset($_SESSION)){
+			session_start();
+		}
+
 		?>
 		<main>
 			<h1>Produtos</h1>
-			<h3>Lista de cadastrados</h3>
+			<h3>Lista cadastrados</h3>
 			<table class="table table-bordered">
 				<tr>
-					<td>ID</td>
-					<td>FOTO</td>
-					<td>NOME</td>
-					<td>TIPO</td>
-					<td>CATEGORIA</td>
-					<td>FABRICANTE</td>
-					<td>ATIVO</td>
-					<td>AÇÃO</td>
+					<th>ID</th>
+					<th>FOTO</th>
+					<th>NOME</th>
+					<th>TIPO</th>
+					<th>CATEGORIA</th>
+					<th>FABRICANTE</th>
+					<th>ATIVO</th>
+					<th>AÇÃO</th>
 				</tr>
 				<?php 
-					while($produto = $sql_query->fetch_assoc()){
-
-					
+				while($produto = $sql_query->fetch_assoc()){
 				?>
 				<tr>
 					<td><?= $produto['idproduto']?></td>
-					<td><img height="50" src="<?= $produto['foto']?>"</td>
+					<td><img height="50" src="<?= $produto['foto']?>"></td>
 					<td><?= $produto['nome']?></td>
 					<td><?= $produto['tipo']?></td>
 					<td><?= $produto['categoria']?></td>
 					<td><?= $produto['fabricante']?></td>
 					<td><?= $produto['ativo']?></td>
-					<td><?= $produto['ativo']?></td>
 					<td>
-						<a href="estoque.php?id=<?=$produto['idproduto']; ?>">[Estoque]</a>
-                        <a href="mais_detalhes.php?id=<?=$produto['idproduto']; ?>">[Detalhes]</a>
+						<?php
+						if(isset($_SESSION['tipo'])){
+							$idProduto = $produto['idproduto'];
+							echo "<a href='estoque.php?id=$idProduto;'>[ESTOQUE]</a>";
+						}?>
+                        <a href="mais_detalhes.php?id=<?=$produto['idproduto']; ?>">[DETALHES]</a>
+						<a href="estoque.php?id=<?=$produto['idproduto']; ?>">[ESTOQUE]</a>
 					</td>
 				</tr>
-				<?php 
-					}			
+				<?php
+				}
 				?>
 			</table>
 		</main>

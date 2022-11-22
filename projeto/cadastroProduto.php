@@ -3,49 +3,46 @@
 
 <head>
 	<?php 
-	require "html/head.php";	
+	require "html/head.php";
 	?>
-
 	<script>
-		function selecao() {
+		
+	function selecao() {
 
-			if (f.tipo.value == "HARDWARE") {
-				document.getElementById("perid").value = "";
-				document.getElementById("divHar").style.display = 'block';
-				document.getElementById("harid").disabled = false;
-				document.getElementById("perid").disabled = true;
-				document.getElementById("divPer").style.display = 'none';
-			} else {
-				document.getElementById("harid").value = "";
-				document.getElementById("divHar").style.display = 'none';
-				document.getElementById("harid").disabled = true;
-				document.getElementById("perid").disabled = false;
-				document.getElementById("divPer").style.display = 'block';
-			}
+		if (f.tipo.value == "HARDWARE") {
+			document.getElementById("perid").value = "";
+			document.getElementById("divHar").style.display = 'block';
+			document.getElementById("harid").disabled = false;
+			document.getElementById("perid").disabled = true;
+			document.getElementById("divPer").style.display = 'none';
+		} else {
+			document.getElementById("harid").value = "";
+			document.getElementById("divHar").style.display = 'none';
+			document.getElementById("harid").disabled = true;
+			document.getElementById("perid").disabled = false;
+			document.getElementById("divPer").style.display = 'block';
 		}
+	}
 	</script>
-
+	
 </head>
 
-	
-
 	<!--  -->
-<body>
-	<?php
-
+	<body>
+		<?php 
 		include "html/header.php";
 		require_once "src/conexao.php";
 
-		$nome = isset($_post["nome"]) ? $_POST["nome"] : "";
+		$nome = isset($_POST["nome"]) ? $_POST["nome"] : "";
 		$tipo = isset($_POST["tipo"]) ? $_POST["tipo"] : "";
 		$categoria = isset($_POST["categoria"]) ? $_POST["categoria"] : "";
 		$fabricante = isset($_POST["fabricante"]) ? $_POST["fabricante"] : "";
 		$descricao = isset($_POST["descricao"]) ? $_POST["descricao"] : "";
 		$ativo = isset($_POST["ativo"]) ? $_POST["ativo"] : true;
-		 
-			if(isset($_FILES['foto'])){
-			$foto = $_FILES['foto'];
 		
+		if(isset($_FILES['foto'])){
+			$foto = $_FILES['foto'];
+			
 			if($foto['size'] > 2097152){
 				die("Arquivo muito grande! Max: 2MB");
 			}
@@ -61,24 +58,30 @@
 			// img/produtos/sdfksajfksa.png
 			$caminho = $pasta . $nomeDaFoto . "." .$extensao;
 			$deu_certo = move_uploaded_file($foto["tmp_name"], $caminho);
-	
+			//img/produtos/1654vbfdsvb6fds4.png
 			if($deu_certo){
 				$sql_code = "INSERT INTO produtos VALUES (NULL, '$nome', '$tipo', '$categoria', '$fabricante', '$descricao', '$caminho', true)";
 
 				$sql_query = $conexao->query($sql_code) or die("Falha na execução do código SQL: " . $conexao->error . "<br>" . var_dump($conexao->error));
+				if($sql_query){
+					echo "Gravou!";
+				} else {
+					echo "Não gravou!";
+				}
 
 				echo "<p>Arquivo enviado com sucesso! Para acessá-lo clique aqui:
-				<a target='_blank' href='$caminho'>Foto</a> 
+				<a target='_blank' href='$pasta$nomeDaFoto.$extensao'>Foto</a> 
 				</p>";
-	
+				
 			} else {
 				echo "<p>Falha ao enviar arquivo!</p>";
 			}
 	
 		}
 		
-	?>
-	<main>
+
+		?>
+		<main>
 		<div class="container-fluid">
 			<h3>Cadastro de Produtos</h3>
 			<form enctype="multipart/form-data" class="row g-3 container-fluid" action="" name="f" method="post">
@@ -136,13 +139,15 @@
 				</div>
 			</form>
 		</div>
-	</main>
+		</main>
+<?php
+	include "html/rodaPe.php";
+?>
 
-	<?php include "html/rodaPe.php"; ?>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-	crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
 
 </body>
 

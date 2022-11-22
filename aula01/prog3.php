@@ -13,18 +13,16 @@
     </p><br/>
 	
     <?php
-		$num1 = "10";
-		$num2 = "5"; 
-    $total = ($num1 + $num2);
-    $total2 = ($num1 * $num2);
-    $total3 = ($num1 / $num2);
-
-    echo "<br>A soma de ".$num1." + ".$num2." = ". $total;
-    
-    echo "<br>A multiplicaçao de ".$num1." x ".$num2." = ". $total2;
-
-    echo "<br>A divisão de ".$num1. " / ".$num2." = ". $total3;
-
+		//Declaração de variável
+		$num1;
+		//Atribuição de valor a variável
+		$num1 = 10;
+		//Declarando a variável e atribuindo valor.
+		$num2 = "5"; //Variável do tipo string
+        //Soma realizada com sucesso, mesmo sendo uma das variáveis string
+        $total = ($num1 + $num2);
+		echo "A soma de ".$num1." + ".$num2." = ". ($num1 + $num2);
+		echo "<br>A soma de ".$num1." + ".$num2." = ". $total;
     ?>
     <br/>
     <br/>

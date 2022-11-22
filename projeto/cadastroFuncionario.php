@@ -33,9 +33,9 @@
                 <?php $res = true ?>
 			}
 		}
-
+        
         </script>
-
+        
 </head>
 
 	<!--  -->
@@ -46,9 +46,9 @@
         require_once "src/model/Cliente.php";
 
 		if(isset($_GET['gravado'])){
-
+			
 		$gravado = isset($_GET['gravado']) ? $_GET['gravado'] : 0;
-
+		
         if($gravado > 0){
 
 				echo '<!DOCTYPE html>';
@@ -82,7 +82,7 @@
 
 		<main>
         <div class="container-fluid">
-			<h3>Cadastro de Funcionárioos</h3>
+			<h3>Cadastro de Funcionários</h3>
 			<form class="row g-3 container-fluid" name="f" action="src/controler/funcionario_bd/registroFuncionario.php" method="post">
 
 				<div class="col-md-6 col-sm-12">
@@ -126,7 +126,7 @@
 						<option value="Vendendor">Vendendor</option>
 					</select>
 				</div>
-
+					
 				<div class="col-md-6 col-sm-12">
 					<label for="sen1" class="form-label">Senha</label>
 					<input type="password" class="form-control" id="sen1" onblur="confirma()" name="senha" value="" required>
