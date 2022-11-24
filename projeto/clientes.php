@@ -8,6 +8,10 @@
 	<!--  -->
 	<body>
 		<?php 
+        require_once "src/protect.php";
+        if(!isset($_SESSION['tipo'])){
+            header("Location: nao_permitido.php");
+        }
         include "html/header.php"; 
         require_once "src/conexao.php";
 
@@ -23,9 +27,11 @@
         if(!isset($_SESSION)){
             session_start();
         }
-    
+
         $id = isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
         $nome = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
+        $tipo = isset($_SESSOIN['tipo']) ? $_SESSION['tipo'] : "";
+
 
         // echo "ID: $id - Cliente: $nome";
         ?>
@@ -61,12 +67,15 @@
                     <td><?=$cliente["email"]; ?></td>
                     <td><?=$cliente["ativo"]; ?></td>
                     <td>
-                        <a href="edicaoCliente.php?id=<?=$cliente['idcliente']; ?>">[EDITAR]</a>
+                        <a href="edicaoCliente.php?id=<?=$cliente['idcliente']; ?>"><i class="bi bi-pencil-square" style="font-size: 2rem;"></i></a>
                         <?php
 							if(isset($_SESSION['tipo']) && $_SESSION['tipo'] == "Administrador"){
                         ?>
-                        <a href="src/controler/cliente_bd/excluirCliente.php?id=<?=$cliente['idcliente']; ?>">[EXCLUIR]</a>
-                        <?php } ?>			
+                        <a href="#" onclick="confirmarApagar(<?=$cliente['idcliente']; ?>)"> 
+
+                        <?php } ?>
+                        <a href="src/controler/cliente_bd/excluirCliente.php?id=<?=$cliente['idcliente']; ?>"><i class="bi bi-trash" style="font-size: 2rem; color: red;"></i></a>		
+                        
                     </td>
                    <?php endforeach ?> 
                 </tr>
@@ -83,6 +92,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
+        <script src="src/js/confirmacao.js></script>
 
 </body>
 
