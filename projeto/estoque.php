@@ -54,7 +54,6 @@
 					<td><?= $produto['valor_venda']?></td>
 				</tr>
 				<?php
-
 				}
 				?>
 			</table>

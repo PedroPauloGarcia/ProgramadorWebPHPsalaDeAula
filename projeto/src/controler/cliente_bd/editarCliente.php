@@ -3,7 +3,7 @@
 require_once "../../protect.php";
 require_once "../../conexao.php";
 
-$idCliente = isset($_GET['idcliente']) ? $_GET['idcliente'] : 0;
+$idCliente = isset($_POST['idcliente']) ? $_POST['idcliente'] : 0;
 
 if($idCliente > 0){
     $nome = isset($_POST["nome"]) ? $_POST["nome"] : "";
