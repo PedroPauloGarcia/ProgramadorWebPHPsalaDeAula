@@ -31,19 +31,42 @@
         
         $idCliente = isset($_POST["id"]) ? $_POST["id"] : 0;
         $tipo = isset($_POST["tipo"]) ? $_POST["tipo"] : "";
-        $logadouro = isset($_POST["logadouro"]) ? $_POST["logadouro"] : "";
+        $logadouro = isset($_POST["logradouro"]) ? $_POST["logradouro"] : "";
         $numero = isset($_POST["numero"]) ? $_POST["numero"] : "";
         $complemento = isset($_POST["complemento"]) ? $_POST["complemento"] : "";
         $bairro = isset($_POST["bairro"]) ? $_POST["bairro"] : "";
         $cidade = isset($_POST["cidade"]) ? $_POST["cidade"] : "";
         $estado = isset($_POST["estado"]) ? $_POST["estado"] : "";
         $cep = isset($_POST["cep"]) ? $_POST["cep"] : "";
-        $ativo = isset($_POST["ativo"]) ? $_POST["ativo"] : true;
+        //$ativo = isset($_POST["ativo"]) ? $_POST["ativo"] : true;
 
-        $sql_code2 = "INSERT INTO endereco  VALUES (NULL,'$idCliente', '$tipo', '$logadouro', '$numero', $complemento', '$bairro', '$cidade', '$estado', '$cep', true)";
-			
-        $sql_query2 = $conexao->query($sql_code2);
-        
+
+        if(isset($_POST["tipo"]) && isset($_POST["logradouro"]) && isset($_POST["numero"]) && isset($_POST["complemento"]) && isset($_POST["bairro"]) && isset($_POST["cidade"]) && isset($_POST["estado"]) && isset($_POST["cep"])){
+
+            // $endereco = new Endereco(
+            //     $idCliente,
+            //     $tipo,
+            //     $logadouro,
+            //     $numero,
+            //     $complemento,
+            //     $bairro,
+            //     $cidade,
+            //     $estado,
+            //     $cep
+            // );
+
+                var_dump($tipo);
+
+            $sql_code2 = "INSERT INTO endereco  VALUES (NULL, $idCliente, '$tipo', '$logadouro', '$numero', '$complemento', '$bairro', '$cidade', '$estado', '$cep')";
+            $sql_query2 = $conexao->query($sql_code2);
+
+            var_dump($sql_query2);
+
+        } else {
+            echo"Dentro do else";
+            var_dump($tipo);
+        }
+
         ?>
 		
     <div class="accordion" id="accordionExample">
@@ -99,7 +122,7 @@
                     </div>
                                 
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit" id="btn-off1" disabled style="display: none" >Cadastrar</button>
+                        <button  class="btn btn-primary" type="submit" id="btn-off1" disabled style="display: none" >Cadastrar</button>
                         <button class="btn btn-primary" type="submit" id="btn-on1" >Cadastrar</button>
                     </div>
                 </form>
@@ -114,7 +137,7 @@
                     <h5>Contatos</h5>
                 </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <!-- --------------------------------------------------- -->
                     <div class="container-fluid">
