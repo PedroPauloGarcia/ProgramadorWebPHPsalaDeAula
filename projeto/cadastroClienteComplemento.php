@@ -67,6 +67,7 @@
             var_dump($tipo);
         }
 
+
         ?>
 		
     <div class="accordion" id="accordionExample">

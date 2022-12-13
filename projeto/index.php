@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+	$teste = isset($_COOKIE['cliente']) ? $_COOKIE['cliente'] : '';
+	$login = isset($_COOKIE['login']) ? $_COOKIE['login'] : '';
+	
+?>
 <html lang="pt-br">
 
 <head>

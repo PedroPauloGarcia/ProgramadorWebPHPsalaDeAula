@@ -72,7 +72,7 @@
 					</div>
 				</a>
                 <?php } else { ?>
-                    <a href="cadastroClienteComplemento.php?id=<?=$id; ?>">
+                    <a href="cadastroClienteComplemento.php?aba=<?=$aba=1; ?>">
 					<div class="col">
 						<div class="card" >
 						<i class="bi bi-house text-center text-danger" style="font-size: 10rem;"></i>
@@ -85,7 +85,7 @@
 				    </a>
                 <?php } ?>
 
-				<a href="cadastroClienteComplemento.php?id=<?=$id; ?>">
+				<a href="cadastroClienteComplemento.php?aba=<?=$aba; ?>">
 					<div class="col">
 						<div class="card" >
 						<i class="bi bi-telephone text-center text-danger" style="font-size: 10rem;"></i>
