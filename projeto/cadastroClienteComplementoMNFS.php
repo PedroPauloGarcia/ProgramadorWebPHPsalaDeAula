@@ -50,8 +50,7 @@
 				// );
 				
 				$sql_code = "INSERT INTO endereco VALUES (NULL, '$idCliente', '$tipo', '$logradouro', '$numero', '$complemento','$bairro', '$cidade', '$estado', '$cep')";
-                $sql_query = $conexao->query($sql_code);
-                var_dump($sql_query);
+				$sql_query = $conexao->query($sql_code);
 			}
             
             // ----------------------- TELEFONE -----------------------------------------------
