@@ -2,8 +2,8 @@
 <html lang="pt-br">
 
 <head>
-    <?php 
-    require "html/head.php";
+	<?php 
+    require_once "html/head.php"; 
     if(!isset($_SESSION)){
         session_start();
     }
@@ -61,15 +61,13 @@
 
     } 
 
-    
-
     include_once 'carrinho.php';
 
         ?>
 		<main>
 		<h1>Detalhes do produto</h1>
         <div class="card">
-            <img src="<?= $estoque['foto'] ?>" style="width: 20rem; margin: auto" class="card-img-top" alt="...">
+            <img src="<?= $objEstoque->getProduto()->getFoto() ?>" style="width: 20rem; margin: auto" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title"><?= $estoque['nome'] ?></h5>
                 <p class="card-text"><?= $estoque['descricao'] ?></p>
