@@ -178,55 +178,69 @@ if(!isset($_SESSION)){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">IR PARA O CARRINHO</button>
+        <a href="carrinho.php" type="button" class="btn btn-primary">IR PARA O CARRINHO</a>
       </div>
     </div>
   </div>
 </div>
-<?php 
-	// Remover do carrinho 
+<?php
+	//Remover do carrinho 
 	if(isset($_GET['remover'])){
 		$idRemovido = $_GET['remover'];
 		unset ($_SESSION['carrinho'][$_GET['remover']]);
 
-		if (isset($_SESSION['carrinho'])){
+		if(isset($_SESSION['carrinho'])){
 			if(count($_SESSION['carrinho']) == 0){
 				unset($_SESSION['carrinho']);
 			}
 		}
 
 		unset($_GET['remover']);
-		echo '<script> 
-		
-		const btn = document.querySelector("#excluir")
-	
-		let dominio  = window.location.host;
-		let end = window.location.href; // mais_detalhes.php
+		echo '<script defer>
+
+		let dominio = window.location.host;
+		let end = window.location.href;// mais_detalhes.php
 		let finalEnd = end.indexOf("."); // posição do caracter "."
-		let pagina = end.substr((dominio.length + 9), finalEnd); // mais_detalhes
-		let idItemRemovido = end.substr(end.indexOf("=") + 1, end.length);
-		console.log("Domínio: "+ dominio)
-		console.log("Tamanho do domínio: "+ dominio.length + " + 9 = "+ (dominio.length + 9));
+		let tamanhoPasta = "/php/projeto/".length;
+		let pagina = "";
+		let posicao = end.indexOf("localhost"); 
+		if( posicao >= 0){
+			pagina = end.substr((posicao + dominio.length + tamanhoPasta), finalEnd); // mais_detalhes
+		} else {
+			pagina = end.substr((dominio.length + 1), finalEnd); // mais_detalhes
+		}
+		pagina = pagina.substr(0, pagina.indexOf("."));
+		let idItemRemovido = end.substr(end.indexOf("=")+1, end.length);
+		console.log("Domínio: "+ dominio);
+		console.log("tamanho do domínio: "+ dominio.length + " + 9 = "+ (dominio.length +9));
+		console.log("Tamanho da pasta: "+ tamanhoPasta);
 		console.log("Pagina: "+ pagina);
 		console.log("Endereço 1: "+ end);
 		console.log("Tamanho do Endereço 1: "+ end.length);
-		console.log("Posição do Endereço 1: "+ end.indexOf("."));
+		console.log("Posição do Ponto do Endereço 1: "+ end.indexOf("."));
 			if(pagina == "mais_detalhes"){
-				// end = end.substr(0,end.indexOf("?"));
-				// end = end + "?id=" + idItemRemovido;
-				end = end.substr(0, end.indexOf("?"))
+				end = end.substr(0, end.indexOf("?"));
+				end = end + "?id=" + idItemRemovido;
+				// end = pagina + ".php?id=" + idItemRemovido;
 			} else {
 				end = end.substr(0, end.indexOf("?"));
+				// end = end + "Teste";
 			}
 	
 			console.log("Endereço 2: " + end);
-			window.locaiton.href=""+end;
-	
-		bnt.addEventListener("click", () =>{
-			location.reload()
-		})
+			window.location.href=""+end;
 
-			  </script>';
+		</script>';
 
 	}
 ?>
+<!-- <script>
+
+		
+		
+    const btn = document.querySelector("#excluir")
+	
+    bnt.addEventListener('click', () =>{
+        // location.reload()
+    })
+</script> -->
