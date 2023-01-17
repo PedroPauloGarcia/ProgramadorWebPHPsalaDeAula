@@ -23,7 +23,8 @@
 
             <?php 
                 if(isset($_SESSION['carrinho'])) : 
-                $sql_code = "SELECT * FROM produtos LEFT JOIN estoque ON idproduto = id_produto WHERE idproduto IN (";
+				// $sql_code = "SELECT * FROM produtos LEFT JOIN estoque ON idproduto = id_produto WHERE idproduto IN (";
+				$sql_code
             ?>
 			<div class="table-responsive"> 	
 				<table class="table table-bordered align-middle">
@@ -41,7 +42,9 @@
 					<?php 
 					$totalCompra = 0;
                     foreach($_SESSION['carrinho'] as $key => $value) :
-                        $sql_code = $sql_code . unserialize($value['obj'])->getProduto()->getIdproduto(). ", ";
+						$idDoProduto = . unserialize($value['obj'])->getProduto()->getIdproduto();
+						$sql_code = "SELECT DISTINCT idproduto, nome, tipo, valor_venda, (SELECT  sum(qtd) FROM produtos LEFT JOIN estoque ON idproduto = id_produto WHERE registro = 'ENTRADA' AND idproduto = '$idDoProduto') - (SELECT  sum(qtd) as saldo FROM produtos LEFT JOIN estoque ON idproduto = id_produto WHERE registro = 'SAÍDA' AND idproduto = '$idDoProduto') as saldo FROM produtos LEFT JOIN estoque ON idproduto = id_produto WHERE idproduto = '$idDoProduto'";	
+						
 					?>
 					<tr>
 						<td><img width="50" src="<?= unserialize($value['obj'])->getProduto()->getFoto() ?>"></td>
@@ -78,7 +81,7 @@
 			echo "<h3 style='text-align: center; margin-top: 50px'>Não há produtos no carrinho no momento</h3>";
             endif;
 
-            $podeRegistrar = true;
+            $podeRegistrar = false;
             $texto = "Não possuímos a(s) quantidade(s) do(s) produto(s) solicitado(s): ";
             
             $sql_query = $conexao->query($sql_code);
@@ -91,15 +94,44 @@
             foreach($lista as $registro){
                 $qtdSolicitada = $_SESSION['carrinho'][$registro['idproduto']]['qtd'];
                 if($registro['qtd'] < $qtdSolicitada){
-                    $podeRegistrar = false;
-                    $texto = $texto . "\\n" . $qtdSolicitada . " - " . $registro['nome'];
+                    $podeRegistrar = true;
                 } else {
+                    $texto = $texto . "\\n" . $qtdSolicitada . " - " . $registro['nome'];
                     // SQL PARA REGISTRAR NAS 2 TABELAS(ESTOQUE & HISTORICO_COMPRA)
                 }
             }
 
             if($podeRegistrar){
-                echo "<script> alert('REGISTRADO!!!') </script>";
+				echo "<script> alert('REGISTRADO!!!') </script>";
+				foreach($lista as $registro){
+					$idProduto = $registro['idproduto'];
+					$nomeProduto = $registro['nome'];
+					$tipo = $registro['tipo'];
+					$valor = $registro['valor_venda'];
+					$data = date(y-m-d);
+
+					$sql_code2 = "INSERT INTO estoque VALUES (NULL, '$idProduto, '$qtdSolicitada', 'SAÍda', '$data', NULL, '$valor'";
+
+					$sql_query2 = $conexao->query($sql_code2);
+					if($sql_query2){
+						echo "GRAVOU!!";
+					} else {
+						echo "NÃO GRAVOU!!";
+					}
+					
+					$sql_code3 = "INSERT INTO historico de compra VALUES (NULL, '$id', '$data', '$idProduto', '$nomeProduto', '$tipo', '$valor')";
+
+					$sql_query3 = $conexao->query($sql_code3);
+					if($sql_query){
+						echo "GRAVOU!!";
+					} else {
+						echo "NÃO GRAVOU!!";
+					}
+				}
+
+				unset($_SESSION['carinho']);
+				echo "<script>window.location.href='historico_compra.php'</script>"
+
             } else {
                 echo "<script> alert('". $texto ."') </script>";
             }
